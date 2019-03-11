@@ -1,0 +1,50 @@
+---
+apis:
+  - title: Get all users
+    desc: more desc of this API
+    method: GET
+    host: https://xxx.com
+    path: /api/v1/users
+    query:
+    body:
+      page:
+        type: integer
+        desc: which page data?
+        examples:
+          - 1
+          - 10
+      page_size: integer
+    body_formats: ['application/json']
+    response:
+      success:
+        - items:
+            - $res: simple_user
+            - $res: simple_user
+          total: 2
+
+  - title: Get a user info
+    desc: more desc of this API
+    method: GET
+    path: /api/v1/users/:id
+    response: # auto json
+      success:
+        - http_code: 200
+          data:
+            $res: full_user
+      errors:
+        - http_code: 400
+          data:
+            code: 1
+            msg: 'not found'
+
+        - $res: need_auth
+
+  - title: Get a user info
+    desc: more desc of this API
+    path: /Helloword.FirstGrpc/SayHello
+    response: # auto json
+      success:
+        - $res: full_user_grpc_json
+      errors:
+        - $res: grpc_error
+

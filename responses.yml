@@ -1,0 +1,39 @@
+---
+
+responses:
+  need_auth:
+    http_code: 400
+    data:
+      code: 1
+      error: not found
+
+  grpc_error:
+    data:
+      code: 1,
+      desc: 'xxx'
+
+  simple_user:
+    desc: desc of this object
+    data:
+      id:
+        type: integer
+        examples: 1
+      name: hehe
+      avatar_url: https://asdf.com/a.jpg
+
+  full_user:
+    http_code: 201
+    data:
+      id: 1
+      name: hehe
+      avatar_url: https://asdf.com/a.jpg
+      created_ts:
+        desc: UNIX timestamp, ignore null or zero
+        examples: 1
+      address:
+        - $ref: address
+        - $ref: address
+
+  full_user_grpc_json:
+    data:
+      name: hello
