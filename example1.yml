@@ -1,0 +1,13 @@
+project:
+  url: https://xjz.pw
+
+apis:
+  - title: Index
+    method: GET
+    path: /
+    response:
+      success:
+        - http_code: 0
+          data: hello
+      error:
+

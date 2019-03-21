@@ -1,0 +1,9 @@
+partials:
+  user:
+    id: .t/integer
+    name: .t/name
+    avatar: .t/avatar
+
+  full_user:
+    .*: .p/user
+    email: .t/email
