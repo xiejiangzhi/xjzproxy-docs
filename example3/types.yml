@@ -1,0 +1,13 @@
+---
+types:
+  avatar:
+    items:
+      - /path/a
+      - /path/b
+      - /ccc
+    prefix:
+      - https://xjz.pw/images
+      - https://other.com/images
+    suffix:
+      - .png
+      - .jpg

@@ -6,7 +6,9 @@ require 'grpc'
 require 'hello_services_pb'
 
 # https://grpc.io/docs/guides/auth.html#ruby
-stub = Hello::Greeter::Stub.new('localhost:50051', GRPC::Core::Credentials.new(load_certs))
+# stub = Hello::Greeter::Stub.new('localhost:50051', GRPC::Core::Credentials.new(load_certs))
+stub = Hello::Greeter::Stub.new('localhost:50051', :this_channel_is_insecure)
+# stub = Hello::Greeter::Stub.new('localhost:9898', :this_channel_is_insecure)
 
 puts "call say_hell"
 stub.say_hello(Google::Protobuf::Empty.new).to_json
