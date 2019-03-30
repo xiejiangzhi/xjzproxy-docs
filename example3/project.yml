@@ -1,4 +1,4 @@
 project:
-  url: https?://localhost
+  url: https?://127.0.0.1
   grpc:
     dir: ./protos

@@ -7,11 +7,11 @@ require 'hello_services_pb'
 
 # https://grpc.io/docs/guides/auth.html#ruby
 # stub = Hello::Greeter::Stub.new('localhost:50051', GRPC::Core::Credentials.new(load_certs))
-stub = Hello::Greeter::Stub.new('localhost:50051', :this_channel_is_insecure)
+stub = Hello::Greeter::Stub.new('127.0.0.1:50051', :this_channel_is_insecure, timeout: 30)
 # stub = Hello::Greeter::Stub.new('localhost:9898', :this_channel_is_insecure)
 
-puts "call say_hell"
-stub.say_hello(Google::Protobuf::Empty.new).to_json
+# puts "call say_hell"
+# stub.say_hello(Google::Protobuf::Empty.new).to_json
 
 puts "call say_name with 'World'"
 puts stub.say_name(Hello::Request.new(name: 'World')).to_json

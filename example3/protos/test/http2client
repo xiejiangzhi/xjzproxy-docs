@@ -1,0 +1,73 @@
+#! /usr/bin/env ruby
+
+$LOAD_PATH.unshift File.expand_path("../", __FILE__)
+
+require 'socket'
+require 'http/2'
+require 'hello_services_pb'
+
+sock = TCPSocket.new('127.0.0.1', 50051);nil
+# sock = TCPSocket.new('slack.com', 80)
+
+conn = HTTP2::Client.new; nil
+conn.on(:frame) { |bytes| sock << bytes; sock.flush }; nil
+conn.on(:frame_sent) { |f| puts f.inspect }; nil
+# conn.on(:frame_received) { |f| puts f.inspect }
+
+# conn.ping('a' * 8) { |d| puts "pong #{d}" }; nil
+
+stream = conn.new_stream
+headers = []
+body = ''
+stream.on(:headers) do |h|
+  headers.push(*h)
+  puts h.inspect
+end
+
+stream.on(:data) do |bytes|
+  body << bytes
+end
+
+stream.on(:close) do
+  puts headers.inspect
+  puts body.inspect
+end
+
+# end_header
+rh = [
+  [":scheme", "http"],
+  [":method", "POST"],
+  [":authority", "127.0.0.1:50051"],
+  [":path", "/hello.Greeter/SayName"],
+  ["te", "trailers"],
+  ["content-type", "application/grpc+proto"],
+  ["user-agent", "grpc-ruby/1.19.0 grpc-c/7.0.0 (osx; chttp2; gold)"],
+  ["grpc-accept-encoding", "identity,deflate,gzip"],
+  ["grpc-timeout", "1S"],
+  ["accept-encoding", "identity,gzip"]
+]
+rbody = "\x00\x00\x00\x00\a\n\x05World" 
+
+stream.headers(rh, end_stream: false)
+# pb = Hello::Request.new(name: 'world 13')
+# pb_data = pb.to_proto
+# compressed = 0
+# flags = [compressed, pb_data.bytesize]
+# data = flags.pack("CN") + pb_data
+# puts "Send Data: #{data.inspect}"
+stream.data(rbody, end_stream: true)
+
+loop do
+  begin
+    data = sock.read_nonblock(1024)
+    break unless data
+    # puts "Recv < #{data.inspect}"
+    conn << data
+  rescue IO::EAGAINWaitReadable
+    r, _ = IO.select([sock], nil, nil, 3)
+    break unless r
+  rescue EOFError
+    break
+  end
+end
+
