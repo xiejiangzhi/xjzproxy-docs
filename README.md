@@ -1,6 +1,13 @@
 XJZ Documents
 =============
 
+## Examples
+
+* example1.yml: a project that is single file
+* example2.yml: a project that has many files
+* example3.yml: a grpc project
+
+
 ## Quick Start
 
 
