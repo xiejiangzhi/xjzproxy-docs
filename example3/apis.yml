@@ -1,0 +1,10 @@
+---
+apis:
+  - title: SayHello
+    method: post
+    path: /hello.Greeter/SayHello
+    response:
+      success:
+        - http_code: 200
+          data:
+            message: hello

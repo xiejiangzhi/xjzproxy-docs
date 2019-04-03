@@ -5,14 +5,24 @@ $LOAD_PATH.unshift File.expand_path("../", __FILE__)
 require 'socket'
 require 'http/2'
 require 'hello_services_pb'
+require 'pry'
 
-sock = TCPSocket.new('127.0.0.1', 50051);nil
-# sock = TCPSocket.new('slack.com', 80)
+if ENV['http_proxy']
+  sock = TCPSocket.new('127.0.0.1', 9898); nil
+  sock << <<~REQ
+    CONNECT 127.0.0.1:50051 HTTP/1.1\r
+    Host: 127.0.0.1:50051\r
+    \r
+  REQ
+  sock.readpartial(1024)
+else
+  sock = TCPSocket.new('127.0.0.1', 50051); nil
+end
 
 conn = HTTP2::Client.new; nil
-conn.on(:frame) { |bytes| sock << bytes; sock.flush }; nil
-conn.on(:frame_sent) { |f| puts f.inspect }; nil
-# conn.on(:frame_received) { |f| puts f.inspect }
+conn.on(:frame) { |bytes| sock << bytes; sock.flush }
+conn.on(:frame_sent) { |f| puts " -> #{f.inspect}" }
+conn.on(:frame_received) { |f| puts " <- #{f.inspect}" }
 
 # conn.ping('a' * 8) { |d| puts "pong #{d}" }; nil
 
@@ -21,7 +31,7 @@ headers = []
 body = ''
 stream.on(:headers) do |h|
   headers.push(*h)
-  puts h.inspect
+  # puts h.inspect
 end
 
 stream.on(:data) do |bytes|
@@ -29,6 +39,7 @@ stream.on(:data) do |bytes|
 end
 
 stream.on(:close) do
+  puts '-' * 80
   puts headers.inspect
   puts body.inspect
 end
@@ -42,7 +53,8 @@ rh = [
   ["te", "trailers"],
   ["content-type", "application/grpc+proto"],
   ["user-agent", "grpc-ruby/1.19.0 grpc-c/7.0.0 (osx; chttp2; gold)"],
-  ["grpc-accept-encoding", "identity,deflate,gzip"],
+  # ["grpc-accept-encoding", "identity,deflate,gzip"],
+  ["grpc-encoding", "identity"],
   ["grpc-timeout", "1S"],
   ["accept-encoding", "identity,gzip"]
 ]
