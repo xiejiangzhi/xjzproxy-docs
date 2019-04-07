@@ -7,4 +7,4 @@ apis:
       success:
         - http_code: 200
           data:
-            message: hello
+            message: hello world

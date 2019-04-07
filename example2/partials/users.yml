@@ -3,6 +3,7 @@ partials:
     id: .t/integer
     name: .t/name
     avatar: .t/avatar
+    asdf: asdf val
 
   full_user:
     .*: .p/user

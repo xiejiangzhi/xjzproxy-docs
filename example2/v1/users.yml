@@ -21,6 +21,7 @@ apis:
         - http_code: 200
           headers:
             etag: xxxx
+            content-type: application/json
           data:
             items: .p/user * 10
             total: 10
