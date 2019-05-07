@@ -18,25 +18,23 @@ apis:
       page_size: .t/integer
     response:
       success:
-        - http_code: 200
-          headers:
-            etag: xxxx
-            content-type: application/json
-          data:
-            items: .p/user * 10
-            total: 10
-      error:
-        - .r/err_invalid_params
+        http_code: 200
+        headers:
+          etag: xxxx
+          content-type: application/json
+        data:
+          items: .p/user * 10
+          total: 10
+      error: .r/err_invalid_params
 
   - title: Show a users
     method: get
     path: /api/v1/users/\d+
     response:
       success:
-        - http_code: 200
-          data: .p/full_user
-      error:
-        - .r/err_invalid_params
+        http_code: 200
+        data: .p/full_user
+      error: .r/err_invalid_params
 
   - title: Create a users
     method: post
@@ -44,14 +42,13 @@ apis:
     params: .p/v1_edit_user_params
     response:
       success:
-        - http_code: 201
+        http_code: 201
+        data:
+          code: 0
           data:
-            code: 0
-            data:
-              id: .t/integer
-      error:
-        - .r/err_invalid_params
-        - .r/err_email_was_took
+            id: .t/integer
+      error: .r/err_invalid_params
+      error2: .r/err_email_was_took
 
   - title: Update a users
     method: put
@@ -59,6 +56,5 @@ apis:
     params: .p/v1_edit_user_params
     response:
       success:
-        - http_code: 200
-      error:
-        - .r/err_invalid_params
+        http_code: 200
+      error: .r/err_invalid_params

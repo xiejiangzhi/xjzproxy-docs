@@ -45,10 +45,8 @@ apis:
     query:
       page: 1
     response:
-      success:
-        - .r/list_users
-      error:
-        - .r/invalid_page
+      success: .r/list_users
+      error: .r/invalid_page
 
 ```
 
@@ -202,11 +200,44 @@ apis:
     query:
       page: 1
     response:
-      success:
-        - .r/list_users
-      error:
-        - .r/invalid_page
+      success: .r/list_users # success is required
+      invalid_page: .r/invalid_page # and you can use other keys
 ```
+
+**Field arguments**
+
+```
+apis:
+  - title: Get all users
+    desc: more desc of this API
+    method: GET
+    path: /api/v1/users
+    labels: ['auth']
+    query:
+      page: 1
+      .page.desc: xxx # argument of page field
+      .page.optional: true
+
+      page_size: .t/integer
+      .page_size: # arguments of page_size field
+        desc: Max 100
+        optional: true
+
+    response:
+      success: .r/list_users
+      invalid_page: .r/invalid_page
+```
+
+**Valid field arguments:**
+
+* desc:
+* optional: true, false
+
+**TODO:**
+
+* optional: true, false, { 'if' => field_name }, { 'unless' => field_name }
+* required: true, false, { 'if' => field_name }, { 'unless' => field_name }
+* rejected: true, false, { 'if' => field_name }, { 'unless' => field_name }
 
 
 ## Project

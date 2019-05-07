@@ -5,6 +5,6 @@ apis:
     path: /hello.Greeter/SayHello
     response:
       success:
-        - http_code: 200
-          data:
-            message: hello world
+        http_code: 200
+        data:
+          message: hello world

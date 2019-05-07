@@ -26,10 +26,8 @@ apis:
     path: /api/v1/users
     labels: ['auth']
     query:
-      page: 1
+      page: .t/integer
     response:
-      success:
-        - .r/list_users
-      error:
-        - .r/invalid_page
+      success: .r/list_users
+      error: .r/invalid_page
 
