@@ -2,20 +2,20 @@
 partials:
   v1_edit_user_params:
     name: .t/string
+    .name.optional: true
     avatar: .t/avatar
+    .avatar.optional: true
     email: .t/email
-    ./email.required: true
     password: .t/string
-    ./password.desc: length 6-128
-    ./password.required: true
+    .password.desc: length 6-128
 
 apis:
   - title: List all users
     method: get
     path: /api/v1/users
     query:
-      page: .t/integer
-      page_size: .t/integer
+      page: .t/string
+      page_size: .t/string
     response:
       success:
         http_code: 200
