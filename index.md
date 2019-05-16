@@ -1,5 +1,6 @@
-XJZ Documents
-=============
+XJZProxy
+==========
+
 
 ## Document specification
 
