@@ -1,6 +1,3 @@
-*_pb.rb
-.xjzapi
 *.swp
-xjzapidoc.md
-xjzapidoc.html
 .DS_Store
+_site

@@ -1,5 +1,6 @@
-theme: jekyll-theme-cayman
-
 title: XJZProxy
 description: Document the API and access it through a proxy. Improve teamwork efficiency.
-show_downloads: https://xjz.pw/xxx
+downloads_url: https://xjz.pw/xxx
+google_analytics:
+
+theme: jekyll-theme-cayman
