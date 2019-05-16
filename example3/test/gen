@@ -1,4 +1,0 @@
-#! /usr/bin/env bash
-
-grpc_tools_ruby_protoc --ruby_out=./ --grpc_out=./ -I../protos ../protos/hello.proto ../protos/msg.proto
-
