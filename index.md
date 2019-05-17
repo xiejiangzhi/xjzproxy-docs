@@ -3,47 +3,52 @@ XJZProxy
 
 ## Description
 
-用户定义好接口文档后，通过代理可以直接访问对应的接口。
-所有接口返回数据都将自动自成，工具将会自动按文档定义的请求参数来检查并提示不匹配的。
-当关闭项目的数据生成后，通过代理将直接连接到真实服务器，这时将增加对服务器数据的返回格式进行检查并提示。
+We really develop every interface by document, the interface user does not need to wait for the real test server.
+
+Maybe your workflow is like this
+
+1. Create interface document.
+2. Interface developer code by document.
+3. Interface users develop by document and simulate data themselves.
+4. Deveploy test server, then someone found inconsistencies in the code and the documentation.
+5. Update document or code, and continue to the fourth step.
+
+
+In this case, a document is just a convention. Developers and users can only wait until the last docking to determine that all interfaces are as correct as the documentation.
+
+
+Based on the above, we have developed a tool to make the document a real and effective contract. The developer guarantees that its interface is the same parameter and return data format as the document. The user directly requests the interface according to the document and ensures that the calling parameters of the user are in accordance with the document convention.
 
 
 ## Features
 
-* HTTP/HTTPS/HTTP2/GRPC 请求代理
-* 按 host, connection 分组请求历史
-* 简单的搜索语言过滤请求历史
-* 自动生成接口文档预览
-* 自动生成响应数据
-* 自动对比请求、响应数据，并显示差异
-* 按过滤结果生成相应的错误统计
+* HTTP/HTTPS/HTTP2/GRPC Proxy
+* Group request history based on host or connection
+* Support filtering request history using simple search syntax
+* Automatically generate interface document preview page
+* Automatically generate response data
+* Automatically compare requests, response data, and show differences
+* Generate corresponding error statistics by filtering results
 
 
 
-## 项目文档规范
+## Document Specification
 
-[中文](./SPEC-zh-cn.md) |
-[English](./SPEC.md)
-
-
-## 文档示例
-
-* example1: 一个简单的单一文件接口定义
-* example2: 项目按不同数据拆分成多个文件
-* example3: 一个 GRPC 项目
+[中文](https://github.com/xiejiangzhi/xjzproxy-docs/blob/master/SPEC-zh-cn.md) |
+[English](https://github.com/xiejiangzhi/xjzproxy-docs/blob/master/SPEC.md)
 
 
-## 快速上手
+## Quick Start
 
-### 启动软件
+### Open XJZProxy
 
-打后软件后右上可以看到 `Proxy Runnning`，如果是 `Proxy Stopped` 状态，请在 `Proxy` 中检查更换默认端口再将开关切换到启动
+After opened, you'll see `Proxy Runnning` on top-right. If it's `Proxy Stopped`，Please check and change the port in `Proxy` tab, and turn on the proxy.
 
-### 创建接口项目
+### Create a document for your project
 
-在 `~/home/XJZProxy`（默认项目目录，可修改）下创建一个项目目录 `my_project`
+Create a folder `my_project` under the `~/home/XJZProxy`（it's default directory of all projects, your can change it）
 
-然后添加一个配置文件，以 `.yml` 为后缀，比如 `~/home/XJZProxy/my_project/app.yml`
+Then, add a configuration file with suffix `.yml`, such as `~/home/XJZProxy/my_project/app.yml`
 
 
 ```yaml
@@ -85,13 +90,13 @@ apis:
 
 ```
 
-文档保存后几秒，将会出现提示加了新的项目，现在可以在 `Project` 中查看项目对应的文档了。如果定义格式有问题，也会在文档中显示错误信息。
+A few seconds after the document is saved, you will be prompted to add a new project. Now we can see the document in `Project` tab. If your configuration is incorrect, You will see an error message in the documentation.
 
 
-确认正确后，通过代码访问对应的接口将返回定义好的数据内容
+Make sure all is right. we can access the API by proxy, it will return your defined data.
 
 ```
 curl http://xjz.pw/api/v1/users --proxy localhost:9898
 ```
 
-如果要使用 HTTPS ，在 `Proxy` 中复制 Root CA URL，并打开浏览器下载安装。
+If you want to use HTTPS, Copy the Root CA URL in `Proxy` tab, then open your browser to download and install it.
