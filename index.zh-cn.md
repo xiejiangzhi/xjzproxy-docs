@@ -1,9 +1,7 @@
 ---
+title: XJZProxy
 description: 我们真正的依照文档去开发并用文档去检查接口
 ---
-
-XJZProxy
-=========
 
 ## 功能
 

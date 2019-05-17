@@ -1,9 +1,7 @@
 ---
+title: XJZProxy
 description: We really develop the interface by document and check the interface by document.
 ---
-
-XJZProxy
-=========
 
 ## Features
 
