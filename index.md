@@ -1,9 +1,24 @@
+---
+description: We really develop the interface by document and check the interface by document.
+---
+
 XJZProxy
 =========
 
+## Features
+
+* HTTP/HTTPS/HTTP2/GRPC Proxy
+* Group request history based on host or connection
+* Support filtering request history using simple search syntax
+* Automatically generate interface document preview page
+* Automatically generate response data
+* Automatically compare requests, response data, and show differences
+* Generate corresponding error statistics by filtering results
+
+
 ## Description
 
-We really develop every interface by document, the interface user does not need to wait for the real test server.
+We really develop the interface by document and check the interface by document.
 
 Maybe your workflow is like this
 
@@ -20,16 +35,11 @@ In this case, a document is just a convention. Developers and users can only wai
 Based on the above, we have developed a tool to make the document a real and effective contract. The developer guarantees that its interface is the same parameter and return data format as the document. The user directly requests the interface according to the document and ensures that the calling parameters of the user are in accordance with the document convention.
 
 
-## Features
+## Preview
 
-* HTTP/HTTPS/HTTP2/GRPC Proxy
-* Group request history based on host or connection
-* Support filtering request history using simple search syntax
-* Automatically generate interface document preview page
-* Automatically generate response data
-* Automatically compare requests, response data, and show differences
-* Generate corresponding error statistics by filtering results
+![app-1](./imgs/app-1.png)
 
+![app-2](./imgs/app-2.png)
 
 
 ## Document Specification
