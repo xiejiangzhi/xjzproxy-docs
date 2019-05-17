@@ -1,4 +1,4 @@
-## 模块
+## 文档模块
 
 * project: 项目的全局配置
 * types: 创建自定义的类型，通过 `.t/` 前缀来使用，比如 `.t/a_type_name` 引用 `a_type_name` 类型
