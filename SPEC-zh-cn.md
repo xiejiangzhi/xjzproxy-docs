@@ -96,10 +96,12 @@ project:
 
 ## 定制类型
 
-* items: 数组，随机选择一个。为字符串时支持计数器变量 `i`, 比如值为 `"num: %{i}"` 时，自动替换 `%{i}` 为当前计数器的值 
-* prefix: 数组，如果存在，将转换 items 中的值为字符，并从这里面随机选取一个作为前缀
-* suffix: 数组，如果存在，将转换 items 中的值为字符，并从这里面随机选取一个作为后缀
-* script: 生成数据通过 ruby 代码，暂末实现
+
+|field|required|value|desc|
+|-----|--------|-----|----|
+|items|true|String 或 Array|随机选择一个。为字符串时支持计数器变量 `i`, 比如值为 `"num: %{i}"` 时，自动替换 `%{i}` 为当前计数器的值|
+|prefix|false|String 或 Array|如果存在，将转换 items 中的值为字符，并从这里面随机选取一个作为前缀|
+|suffix|false|String 或 Array|如果存在，将转换 items 中的值为字符，并从这里面随机选取一个作为后缀|
 
 
 示例
@@ -128,6 +130,16 @@ partials:
 ## API 响应体
 
 类似局部模板，但它有固定的响应体数据结构
+
+
+|field|required|value|desc|
+|-----|--------|-----|----|
+|desc|false| String||
+|http_code|false|默认为 200||
+|headers|false|hash|http headers|
+|headers['content_type']|false|string|返回的数据格式|
+|data|true|任何, String, Hash, 或其它的|API 将会返回这些数据|
+
 
 ```
 responses:
@@ -162,6 +174,19 @@ responses:
 ## APIs
 
 所有的接口都在这里，如果请求方法和路径匹配，将会直接按 response['success'] 中对应的定义来生成数据并返回，而不是去请求服务器。
+
+|field|required|value|desc|
+|-----|--------|-----|----|
+|title|true|||
+|method|true|get, post, put...|http request method|
+|path|true|regexp, /api/v1/users|request path|
+|labels|false|array|对应 labels 的插件将会应用到此接口|
+|desc|false|string|接口描述，会在文档中显示|
+|query|false|hash, like {page: ".t/integer"}|请求的 query 参数定义|
+|body|false|like query|请求的 body 参数定义|
+|params|false|like query|请求的参数定义, 调用时 query 或 body 任一存在对应参数|
+|response|true|hash, see response|接口可以返回的数据|
+
 
 如下所示，当发送请求通过代理时 `curl http://xjz.pw/api/v1/users --proxy localhost:9898`，将直接返回 `.r/list_users` 定义的数据结构
 
@@ -231,8 +256,64 @@ apis:
 * rejected: true, false, { 'if' => field_name }, { 'unless' => field_name }
 
 
-## Plugins 插件
+## Project
+
+如果请求匹配项目的 host ，代码将会记录请求或是为请求生成数据
+
+|field|required|value|desc|
+|-----|--------|-----|----|
+|host|true|regexp string||
+|grpc|false|hash||
+|grpc['dir']|true|./protobuf_dir|protobuf 在项目中的路径，相对于当前目录|
+|grpc['protoc_args']|false|string, example "-I./path/to/include"|使用 protoc 时的定制参数，除了*_out|
+|grpc['proto_files']|false|protobuf 文件匹配器, 默认为 '**/*.proto'|只会编译匹配的文件|
+
+```
+project:
+  host: .+\.xjz\.pw # regexp
+  grpc:
+    dir: protos
+```
 
 
+## Plugins
 
+|field|required|value|desc|
+|-----|--------|-----|----|
+|labels|true|array|这个插件将会应用到有这些 labels 的 apis 上|
+|template|false|hash|API 模板, 它相当于一个 api 定义的默认值|
+
+Example:
+
+```
+apis:
+  - title: list users
+    labels: [auth, paging]
+    method: get
+    path: /api/v1/users
+    response:
+      success:
+        data:
+          items: .p/user * 10
+
+plugins:
+  - labels: [auth]
+    template:
+      params:
+        token: .t/string
+      response:
+        invalid_token:
+          http_code: 401
+          data:
+            error: Invalid token
+
+
+  - labels: [paging]
+    template:
+      params:
+        page: .t/string
+        page_size: .t/string
+```
+
+`GET /api/v1/users` 将会基于 auth 和 paging 模板. 所以这个接口将会需要 `token`, `page` 和 `page_size` 参数. 当然, 这个接口同样会有 `invalid_token` 的响应数据.
 

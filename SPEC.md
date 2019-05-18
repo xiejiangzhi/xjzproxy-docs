@@ -217,7 +217,7 @@ If a request match the url, application will proxy or hack the request.
 |host|true|regexp string||
 |grpc|false|hash||
 |grpc['dir']|true|./protobuf_dir|path of the protobufs, relative current project folder|
-|grpc['protoc_args']|false|string, example "-I./path/to/include||
+|grpc['protoc_args']|false|string, example "-I./path/to/include"|extend arguments when your use grpc|
 |grpc['proto_files']|false|protobuf file matcher, default value is '**/*.proto'|only compile matched protobufs|
 
 ```
