@@ -5,6 +5,7 @@
 * partials: 局部模板，可以用在 partials, response 和 apis 中引用. 通过 `.p/` 前缀来使用，比如 `.p/a_partial_name` 引用 `a_partial_name` 模板
 * responses: 接口的响应数据定义, api 中可以通过 `.r/my_res_name` 来引用
 * apis: 所有的 api 接口定义
+* plugins: 所以的插件定义
 
 
 ## 数据操作符
@@ -114,7 +115,7 @@ types:
 ```
 
 
-## 局部模板
+## Partials 局部模板
 
 只是一个数据模板，可以放置任何数据。可以在 response 或 api 中通过 `.p/{name}` 来引用
 
@@ -228,6 +229,10 @@ apis:
 * optional: true, false, { 'if' => field_name }, { 'unless' => field_name }
 * required: true, false, { 'if' => field_name }, { 'unless' => field_name }
 * rejected: true, false, { 'if' => field_name }, { 'unless' => field_name }
+
+
+## Plugins 插件
+
 
 
 

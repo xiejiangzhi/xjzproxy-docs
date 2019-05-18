@@ -78,12 +78,12 @@ responses:
 
 ## Custom Types
 
-* items: randomly pick one, allow counter variable `i`, example `"num: %{i}"`
-* prefix: convert items to string, and add a prefix that is randomly pick one from this array
-* suffix: convert items to string, and add a suffix that is randomly pick one from this array
-* script: Generate data by ruby code
 
-
+|field|required|value|desc|
+|-----|--------|-----|----|
+|items|true|non-array or array|randomly pick one if it is array, allow counter variable `i`, example `"num: %{i}"`|
+|prefix|false|non-array or array|convert items to string, and add a prefix that is randomly pick one from this array|
+|suffix|false|non-array or array|convert items to string, and add a suffix that is randomly pick one from this array|
 
 ```
 types:
@@ -111,6 +111,16 @@ partials:
 
 Like partials, but it has a fixed data schema
 
+
+|field|required|value|desc|
+|-----|--------|-----|----|
+|desc|false| string||
+|http_code|false|default is 200||
+|headers|false|hash|http header of response|
+|headers['content_type']|false|string|how to format the data|
+|data|true|any, string, hash, etc|api will return these data|
+
+
 ```
 responses:
   show_user:
@@ -124,15 +134,28 @@ responses:
   response_name:
     desc: xxx
     http_code: 400
-    http_headers: 
-      a: 1
+    headers: 
+      content_type: 'application/json'
     data: 
       id: integer
 ```
 
 ## APIs
 
-All api in here, if the host, path and request method match a request, it will render the response
+All api in here, if the host, path and request method match a request, it will render the response.
+
+|field|required|value|desc|
+|-----|--------|-----|----|
+|title|true|||
+|method|true|get, post, put...|request method|
+|path|true|regexp, /api/v1/users|request path|
+|labels|false|array|what plugins will apply to this api|
+|desc|false|string|description of the api|
+|query|false|hash, like {page: ".t/integer"}|defined request query data|
+|body|false|like query|defined request body data|
+|params|false|like query|defined request params data, caller need submit the field in query or body|
+|response|true|hash, see response|some response this api able to return|
+
 
 ```
 apis:
@@ -188,7 +211,59 @@ apis:
 
 If a request match the url, application will proxy or hack the request.
 
+
+|field|required|value|desc|
+|-----|--------|-----|----|
+|host|true|regexp string||
+|grpc|false|hash||
+|grpc['dir']|true|./protobuf_dir|path of the protobufs, relative current project folder|
+|grpc['protoc_args']|false|string, example "-I./path/to/include||
+|grpc['proto_files']|false|protobuf file matcher, default value is '**/*.proto'|only compile matched protobufs|
+
 ```
 project:
-  url: https?://xjz.pw # regexp
+  host: .+\.xjz\.pw # regexp
 ```
+
+
+## Plugins
+
+|field|required|value|desc|
+|-----|--------|-----|----|
+|labels|true|array|this plugin will apply to whice apis|
+|template|false|hash|api template, it's default value of a api|
+
+Example:
+
+```
+apis:
+  - title: list users
+    labels: [auth, paging]
+    method: get
+    path: /api/v1/users
+    response:
+      success:
+        data:
+          items: .p/user * 10
+
+plugins:
+  - labels: [auth]
+    template:
+      params:
+        token: .t/string
+      response:
+        invalid_token:
+          http_code: 401
+          data:
+            error: Invalid token
+
+
+  - labels: [paging]
+    template:
+      params:
+        page: .t/string
+        page_size: .t/string
+```
+
+`GET /api/v1/users` will based on auth and paging template. So it has `token`, `page` and `page_size` params. Sure, it also get the `invalid_token` response.
+

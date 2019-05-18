@@ -1,0 +1,15 @@
+plugins:
+  - title: token auth
+    desc: add token params
+    labels: [auth]
+    template:
+      params:
+        token: .t/string
+
+  - title: paging
+    desc: none
+    labels: [paging]
+    template:
+      params:
+        page: .t/string
+        page_size: .t/string

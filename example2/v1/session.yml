@@ -1,0 +1,25 @@
+---
+apis:
+  - title: Sign in
+    method: post
+    path: /api/v1/session
+    query:
+      email: .t/email
+      password: .t/string
+    response:
+      success:
+        http_code: 200
+        data:
+          user: .p/user
+          token: .t/string
+      error: .r/err_invalid_params
+
+  - title: Sign out
+    method: delete
+    path: /api/v1/session
+    labels: [auth]
+    response:
+      success:
+        http_code: 200
+        data:
+          code: 0

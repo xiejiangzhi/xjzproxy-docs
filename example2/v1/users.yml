@@ -11,11 +11,9 @@ partials:
 
 apis:
   - title: List all users
+    labels: [auth, paging]
     method: get
     path: /api/v1/users
-    query:
-      page: .t/string
-      page_size: .t/string
     response:
       success:
         http_code: 200
@@ -28,6 +26,7 @@ apis:
       error: .r/err_invalid_params
 
   - title: Show a users
+    labels: [auth]
     method: get
     path: /api/v1/users/\d+
     response:
@@ -37,6 +36,7 @@ apis:
       error: .r/err_invalid_params
 
   - title: Create a users
+    labels: [auth]
     method: post
     path: /api/v1/users
     params: .p/v1_edit_user_params
@@ -51,6 +51,7 @@ apis:
       error2: .r/err_email_was_took
 
   - title: Update a users
+    labels: [auth]
     method: put
     path: /api/v1/users/\d+
     params: .p/v1_edit_user_params
