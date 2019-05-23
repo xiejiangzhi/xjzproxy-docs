@@ -126,6 +126,9 @@ apis:
 保存后，在应用的 `Project` 文档中，找到对应接口的 response 可以选择切换。
 
 
+![Choose Response](./imgs/app-3.png)
+
+
 ### 请求参数
 
 大多数接口都会有请求参数，url 中的 `query` 和 http 请求中的 `body` 分别使用 `query` 和 `body` 来定义。当然我们也可以忽略参数位置，使用 `params` 告诉接口只要有这个参数就行了，不管是在 query 还是在 body 中

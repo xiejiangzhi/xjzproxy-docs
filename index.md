@@ -1,6 +1,7 @@
 ---
 title: XJZProxy
 description: The document is the interface, using document development and testing interfaces.
+lang: en-US
 ---
 
 ## Features
@@ -130,6 +131,8 @@ apis:
 ```
 
 After saving, in the application's `Project` document, find the response of the corresponding interface and you can choose to switch.
+
+![Choose Response](./imgs/app-3.png)
 
 
 ### API Parameters
