@@ -31,13 +31,10 @@
   <body>
     <header class="page-header" role="banner">
       {% assign lang_btn_style = 'position: absolute; top: 0.5rem; right: 1rem; padding: 0.25rem 0.5rem;' %}
-      {% if page.url contains '.zh-cn' %}
-      <b>{{page.url}}</b>
-        <a href="{{ page.url | remove: '.zh-ch.html' | remove: '.zh-cn' }}" class="btn" style='{{ lang_btn_style }}'>EN</a>
-      {% elsif page.url == '/' %}
-        <a href='/index.zh-cn' class="btn" style='{{lang_btn_style }}'>中</a>
+      {% if page.url contains 'zh-cn' %}
+        <a href="{{ page.url | remove: '/zh-cn' }}" class="btn" style='{{ lang_btn_style }}'>EN</a>
       {% else %}
-        <a href='{{ page.url | append: '.zh-cn' }}' class="btn" style='{{lang_btn_style }}'>中</a>
+        <a href='{{ '/zh-cn' | append: page.url }}' class="btn" style='{{lang_btn_style }}'>中</a>
       {% endif %}
       <h1 class="project-name">{{ page.title | default: site.title }}</h1>
       <h2 class="project-tagline">{{ page.description | default: site.description }}</h2>
