@@ -41,11 +41,6 @@ Based on the above, we have developed a tool to make the document a real and eff
 ![app-2](./imgs/app-2.png)
 
 
-## Document Specification
-
-[中文](https://github.com/xiejiangzhi/xjzproxy-docs/blob/master/SPEC-zh-cn.md) |
-[English](https://github.com/xiejiangzhi/xjzproxy-docs/blob/master/SPEC.md)
-
 
 ## Quick Start
 
@@ -688,8 +683,10 @@ plugins:
 ```
 
 
-## Document specification
+## Document Specification and Examples
 
 [SPEC](https://github.com/xiejiangzhi/xjzproxy-docs/blob/master/SPEC.md)
+
+[Examples](https://github.com/xiejiangzhi/xjzproxy-docs/blob/master)
 
 

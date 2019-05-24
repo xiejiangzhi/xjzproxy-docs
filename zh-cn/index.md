@@ -681,7 +681,9 @@ plugins:
 ```
 
 
-## 文档规范
+## 文档规范及示例
 
 [SPEC](https://github.com/xiejiangzhi/xjzproxy-docs/blob/master/SPEC-zh-cn.md)
+
+[示例项目](https://github.com/xiejiangzhi/xjzproxy-docs/blob/master)
 
