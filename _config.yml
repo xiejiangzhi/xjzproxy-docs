@@ -1,6 +1,6 @@
 title: XJZProxy
-downloads_url: https://github.com/xiejiangzhi/xjzproxy-docs/releases
 feedback_url: https://github.com/xiejiangzhi/xjzproxy-docs/issues
 google_analytics: UA-140346671-1
+download_cdn_url: https://dpo82iffyxr42.cloudfront.net
 
 theme: jekyll-theme-cayman
