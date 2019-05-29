@@ -49,7 +49,7 @@ description: 文档即接口，使用文档开发、测试接口。
 
 ## 文档规范及示例
 
-[SPEC](https://github.com/xiejiangzhi/xjzproxy-docs/blob/master/SPEC-zh-cn.md)
+[SPEC](https://github.com/xiejiangzhi/xjzproxy-docs/blob/master/zh-cn/SPEC.md)
 
 [示例项目](https://github.com/xiejiangzhi/xjzproxy-docs)
 
