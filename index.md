@@ -17,7 +17,7 @@ lang: en-US
 
 ## Description
 
-A tool lets you use the documentation to check the interface, use the document to accept the request and return the defined data.
+Let the document tell you the parameters of the interface request, and whether the data returned by the server is consistent with the definition in the document. You can call the interface without getting the interface developed.
 
 After creating the interface document, the user can access the defined interface directly through the proxy. If you use `GRPC`, you don't even need to define the interface documentation one by one. Just specify the protobuf in place and then call the `GPRC` interface directly.
 
