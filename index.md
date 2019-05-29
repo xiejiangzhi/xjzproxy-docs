@@ -40,6 +40,6 @@ This tool allows documents to be involved in your development process. The devel
 
 [SPEC](https://github.com/xiejiangzhi/xjzproxy-docs/blob/master/SPEC.md)
 
-[Examples](https://github.com/xiejiangzhi/xjzproxy-docs/blob/master)
+[Examples](https://github.com/xiejiangzhi/xjzproxy-docs)
 
 
