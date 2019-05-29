@@ -1,6 +1,6 @@
 ---
 title: XJZProxy
-description: The document is the interface, using document development and testing interfaces.
+description: API documentation itself is the API, develop and test APIs by documenting the APIs.
 lang: en-US
 ---
 
@@ -15,6 +15,11 @@ lang: en-US
 * Generate corresponding error statistics by filtering results
 
 
+## Workflow
+
+![workflow](/imgs/workflow.png)
+
+
 ## Description
 
 Let the document tell you the parameters of the interface request, and whether the data returned by the server is consistent with the definition in the document. You can call the interface without getting the interface developed.
@@ -22,18 +27,21 @@ Let the document tell you the parameters of the interface request, and whether t
 After creating the interface document, the user can access the defined interface directly through the proxy. If you use `GRPC`, you don't even need to define the interface documentation one by one. Just specify the protobuf in place and then call the `GPRC` interface directly.
 
 
-[Here](/quick-start) you can quickly learn how to define interface documentation. After completing the simple definition, we can help you generate a document that looks like it is not wrong. Documents can be managed by git on the team.
+[Here](/quick-start) you can quickly learn how to define interface documentation. With a simple definition, you can generate a nice API documentation. It can be version
+controled by tools such as git.
 
 Documents are no longer a loose contract. Developers and interface consumers don't have to wait until all interfaces are complete to know that the interface call is ok.
 
-This tool allows documents to be involved in your development process. The developer guarantees that its interface is the same parameter and return data format as the document. The user directly requests the interface according to the document and ensures that the calling parameters of the user are in accordance with the document convention.
-
+This tool makes API documentation part of your development process. With this tool, developers
+can guarantee that the parameters and the returned data is always aligned with the
+documentation. At the same time, the client can directly request the API according to the
+documentation and ensure the requests are as documented.
 
 ## Preview
 
-![app-1](./imgs/app-1.png)
+![app-1](/imgs/app-1.png)
 
-![app-2](./imgs/app-2.png)
+![app-2](/imgs/app-2.png)
 
 
 ## Document Specification and Examples

@@ -90,7 +90,7 @@ apis:
 保存后，在应用的 `Project` 文档中，找到对应接口的 response 可以选择切换。
 
 
-![Choose Response](./imgs/app-3.png)
+![Choose Response](/imgs/app-3.png)
 
 
 ### 请求参数
@@ -240,7 +240,7 @@ apis:
 
 ### 使用类型
 
-相同结构的内容生成的数据都是固定的，我们可以只限制数据类型，然后将自动生成相应格式的数据。通过使用 `.t/{name}` 来引用系统类型或自定的类型。更多类型介绍可以参考[文档规范](./SPEC-zh-cn.md)
+相同结构的内容生成的数据都是固定的，我们可以只限制数据类型，然后将自动生成相应格式的数据。通过使用 `.t/{name}` 来引用系统类型或自定的类型。更多类型介绍可以参考[文档规范](https://github.com/xiejiangzhi/xjzproxy-docs/blob/master/zh-cn/SPEC.md)
 
 ```yaml
 
@@ -647,7 +647,7 @@ plugins:
 
 ## 文档规范及示例
 
-[SPEC](https://github.com/xiejiangzhi/xjzproxy-docs/blob/master/SPEC-zh-cn.md)
+[SPEC](https://github.com/xiejiangzhi/xjzproxy-docs/blob/master/zh-cn/SPEC.md)
 
 [示例项目](https://github.com/xiejiangzhi/xjzproxy-docs/blob/master)
 
