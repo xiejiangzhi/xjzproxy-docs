@@ -1,11 +1,11 @@
 XJZ Documents
 =============
 
-[中文](./README.zh-cn.md)
+[中文](./zh-cn/README.md)
 
 ## Document specification
 
-[SPEC](./SPEC.md) |
+[SPEC](./SPEC.md)
 
 ## Examples
 
@@ -16,5 +16,5 @@ XJZ Documents
 
 ## Quick Start
 
-[Quick Start](https://xjzproxy.xjz.pw#quick-start)
+[Quick Start](https://xjzproxy.xjz.pw/quick-start)
 

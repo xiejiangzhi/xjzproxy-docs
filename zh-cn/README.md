@@ -1,11 +1,9 @@
 XJZProxy 文档
 =============
 
-[English](./SPEC.md)
-
 ## 项目文档规范
 
-[SPEC](./SPEC-zh-cn.md) |
+[SPEC](./SPEC.md)
 
 ## 文档示例
 
@@ -16,5 +14,5 @@ XJZProxy 文档
 
 ## 快速上手
 
-[快速上手](https://xjzproxy.xjz.pw/index.zh-cn#quick-start)
+[快速上手](https://xjzproxy.xjz.pw/zh-cn/quick-start)
 
