@@ -1,7 +1,7 @@
 *_pb.rb
 .xjzapi
 *.swp
-xjzapidoc.md
-xjzapidoc.html
+xjzproxy-doc.md
+xjzproxy-doc.html
 .DS_Store
 _site
