@@ -18,22 +18,27 @@ lang: en-US
 ![workflow](/imgs/workflow.png)
 
 
-## Description
+## The problem we encountered
 
-Let the document tell you the parameters of the interface request, and whether the data returned by the server is consistent with the definition in the document. You can call the interface without getting the interface developed.
+Usually after the requirements are determined, we will first write an interface document to the front end, and then the front end will be developed according to the interface defined by the document.
 
-After creating the interface document, the user can access the defined interface directly through the proxy. If you use `GRPC`, you don't even need to define the interface documentation one by one. Just specify the protobuf in place and then call the `GPRC` interface directly.
+During this time we may encounter many problems:
+
+1. Structured loose or unstructured document format, difficult to manage, collaborate, and troublesome to write
+2. Only documents, users themselves mocking various data is very troublesome, sometimes it will be developed after the real interface is ready.
+3. The request parameter format is not in accordance with the document. It works normally under the example, and there may be problems on the production environment.
+4. The backend interface is not in the document format, and the front end may not be processed in certain situations.
+5. The interface has been changed, but the document has not been changed. Over time, the document is ineffective.
 
 
-With a simple definition, you can generate a nice API documentation. It can be version
-controled by tools such as git.
+## Our solution
 
-Documents are no longer a loose contract. Developers and interface consumers don't have to wait until all interfaces are complete to know that the interface call is ok.
+1. Write structured documents using YAML, and the data structures can be reused. An interface can even be as simple as a few lines
+2. After the document is completed, you are equivalent to having a local backend server. All interfaces in the document can be called directly.
+3. When sending a request defined in the document, we will check by the documentation whether the request parameters are consistent with the document definition. If there is a mismatch, there will be a corresponding prompt
+4. When connecting to a real server, we will help you check if the return format of the data is consistent with the document definition. If there is a mismatch, there will be a corresponding prompt
+5. The above method allows the document to actively participate in the development, and will urge the user to update the document.
 
-This tool makes API documentation part of your development process. With this tool, developers
-can guarantee that the parameters and the returned data is always aligned with the
-documentation. At the same time, the client can directly request the API according to the
-documentation and ensure the requests are as documented.
 
 ## Quick Start
 
