@@ -2,4 +2,5 @@
 .DS_Store
 /_site
 .xjzapi
-xjzapidoc.md
+xjzproxy-doc.md
+xjzproxy-doc.html
