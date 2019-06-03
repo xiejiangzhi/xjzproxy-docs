@@ -9,3 +9,8 @@ lang: en-US
 * <a href="{{ url_prefix | append: '.dmg' }}" target='_blank' id='gat_download_osx_0_1_6'>MacOS-x86_64</a>
 * <a href="{{ url_prefix | append: '-amd64.deb' }}" target='_blank' id='gat_download_linux_0_1_6'>Ubuntu-x86_64 16/18</a>
 
+
+## Release log & old versions
+
+<a href="https://github.com/xiejiangzhi/xjzproxy-docs/releases" target='_blank' id='gat_show_releases'>Releases</a>
+
