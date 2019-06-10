@@ -8,3 +8,4 @@ partials:
   full_user:
     .*: .p/user
     email: .t/email
+    chinese_name: .t/chinese_name

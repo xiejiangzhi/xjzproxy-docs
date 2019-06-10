@@ -78,8 +78,6 @@ project:
 * string: 短文本
 * text: 长文本
 * boolean
-* date
-* datetime
 
 **扩展类型**
 
@@ -91,6 +89,8 @@ project:
 * color_name
 * domain
 * url
+* date: 日期字符串, 格式: "YYYY-mm-dd"
+* datetime: 日期时间字符串, 格式: "YYYY-mm-dd HH:MM:DD"
 * markdown: markdown 文本
 
 
@@ -99,7 +99,8 @@ project:
 
 |field|required|value|desc|
 |-----|--------|-----|----|
-|items|true|String 或 Array|随机选择一个。为字符串时支持计数器变量 `i`, 比如值为 `"num: %{i}"` 时，自动替换 `%{i}` 为当前计数器的值|
+|regexp|true, 如果 items 为空|正则字符串|按此正则来生成随机数据或是验证数据|
+|items|true, 如果 items 为空|String 或 Array|随机选择一个。为字符串时支持计数器变量 `i`, 比如值为 `"num: %{i}"` 时，自动替换 `%{i}` 为当前计数器的值|
 |prefix|false|String 或 Array|如果存在，将转换 items 中的值为字符，并从这里面随机选取一个作为前缀|
 |suffix|false|String 或 Array|如果存在，将转换 items 中的值为字符，并从这里面随机选取一个作为后缀|
 
@@ -114,6 +115,9 @@ types:
       - 'string%{i}'
     prefix: [a, b, c]
     suffix: [d, e, f]
+
+  my_regexp_type:
+    regexp: "^(a|b|c)string\d{1,5}(d|e|f)$"
 ```
 
 
@@ -317,3 +321,7 @@ plugins:
 
 `GET /api/v1/users` 将会基于 auth 和 paging 模板. 所以这个接口将会需要 `token`, `page` 和 `page_size` 参数. 当然, 这个接口同样会有 `invalid_token` 的响应数据.
 
+
+## 引用
+
+* 正则表达式规范: https://ruby-doc.org/core-2.6.2/Regexp.htm

@@ -1,5 +1,7 @@
 ---
 types:
+  chinese_name:
+    regexp: "[\u4e00-\u9fa5]{2,4}"
   avatar:
     items:
       - /path/a

@@ -2,3 +2,4 @@ project:
   host: 127.0.0.1
   grpc:
     dir: ./protos
+    protoc_args:

@@ -60,8 +60,6 @@ responses:
 * string: short text
 * text: long text
 * boolean
-* date
-* datetime
 
 **Extension**
 
@@ -73,6 +71,8 @@ responses:
 * color_name
 * domain
 * url
+* date: string of date, format: "YYYY-mm-dd"
+* datetime: string of datetime, format: "YYYY-mm-dd HH:MM:DD"
 * markdown: text of markdown
 
 
@@ -81,7 +81,8 @@ responses:
 
 |field|required|value|desc|
 |-----|--------|-----|----|
-|items|true|non-array or array|randomly pick one if it is array, allow counter variable `i`, example `"num: %{i}"`|
+|regexp|true if items is empty|string of regexp|Randomly build string that match this regexp|
+|items|true if regexp is empty|non-array or array|randomly pick one if it is array, allow counter variable `i`, example `"num: %{i}"`|
 |prefix|false|non-array or array|convert items to string, and add a prefix that is randomly pick one from this array|
 |suffix|false|non-array or array|convert items to string, and add a suffix that is randomly pick one from this array|
 
@@ -93,8 +94,9 @@ types:
       - 'string%{i}'
     prefix: [a, b, c]
     suffix: [d, e, f]
-    script: |
-      'asdf' + i.to_s
+
+  my_regexp_type:
+    regexp: "^(a|b|c)string\d{1,5}(d|e|f)$"
 ```
 
 ## Partials
