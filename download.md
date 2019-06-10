@@ -11,9 +11,9 @@ lang: en-US
 
 **Changes**
 
-* Add transition animation when updating page
-* Add project mode switching
-* Fix some bugs and optimize the experience
+* Support customize type with Regexp
+* Show more error detail when failed to parse a project.
+* Fix mock mode under HTTP2.
 
 
 **Download**

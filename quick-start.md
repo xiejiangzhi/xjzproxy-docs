@@ -305,14 +305,7 @@ project:
 
 types:
   git_repo:
-    items:
-      - a/a
-      - b/a
-      - xxx/yyy
-    prefix:
-      - "git@github.com:"
-      - "git@gitlab.com:"
-    suffix: ".git"
+    regexp: "^git@github\.com:[\w-]+/[\w-]+\.git$"
 
 partials:
   user:
@@ -378,14 +371,7 @@ project:
 
 types:
   git_repo:
-    items:
-      - a/a
-      - b/a
-      - xxx/yyy
-    prefix:
-      - "git@github.com:"
-      - "git@gitlab.com:"
-    suffix: ".git"
+    regexp: "^git@github\.com:[\w-]+/[\w-]+\.git$"
 
 partials:
   user:
@@ -474,14 +460,7 @@ types.yml
 ```yaml
 types:
   git_repo:
-    items:
-      - a/a
-      - b/a
-      - xxx/yyy
-    prefix:
-      - "git@github.com:"
-      - "git@gitlab.com:"
-    suffix: ".git"
+    regexp: "^git@github\.com:[\w-]+/[\w-]+\.git$"
 ```
 
 partials/user.yaml
