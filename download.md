@@ -11,15 +11,17 @@ lang: en-US
 
 **Changes**
 
-* Support customize type with Regexp
-* Show more error detail when failed to parse a project.
-* Fix mock mode under HTTP2.
+* Support Windows 10
+* Show version in application title
+* Faster to start
+* Fixed some bugs
 
 
 **Download**
 
 * <a href="{{ url_prefix | append: '.dmg' }}" target='_blank' id='gat_download_osx_{{ version_id }}'>MacOS-x86_64</a>
 * <a href="{{ url_prefix | append: '-amd64.deb' }}" target='_blank' id='gat_download_linux_{{ version_id }}'>Ubuntu-x86_64 16/18</a>
+* <a href="{{ url_prefix | append: '-win10.7z' }}" target='_blank' id='gat_download_win10_{{ version_id }}'>Windows 10</a>
 
 
 ## Release log & old versions

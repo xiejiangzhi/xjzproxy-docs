@@ -3,6 +3,6 @@ feedback_url: https://github.com/xiejiangzhi/xjzproxy-docs/issues
 google_analytics: UA-140346671-1
 download_cdn_url: https://dpo82iffyxr42.cloudfront.net
 # download_cdn_url: https://github.com/xiejiangzhi/xjzproxy-docs/releases/download
-app_version: '0.1.8'
+app_version: '0.1.9'
 
 theme: jekyll-theme-cayman
